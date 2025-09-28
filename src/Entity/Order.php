@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 #[ORM\Table(name: 'orders')]
@@ -61,7 +62,7 @@ class Order
         return $this->user;
     }
 
-    public function setUser(User $user): static
+    public function setUser(User|UserInterface $user): static
     {
         $this->user = $user;
         return $this;

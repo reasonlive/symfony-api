@@ -72,6 +72,17 @@ class Product
         return $this;
     }
 
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
+        return $this;
+    }
+
     public function getPrice(): ?float
     {
         return $this->price;
@@ -91,6 +102,17 @@ class Product
     public function setStock(int $stock): static
     {
         $this->stock = $stock;
+        return $this;
+    }
+
+    public function isActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setActive(bool $isActive = true): static
+    {
+        $this->isActive = $isActive;
         return $this;
     }
 

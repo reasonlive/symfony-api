@@ -28,7 +28,6 @@ class Coupon
     private string $code;
 
     #[ORM\Column(type: Types::ENUM, length: 20, options: ['default' => Type::FIXED])]
-    //#[Assert\Choice(choices: Type::values())]
     private Type $type = Type::FIXED;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: false, options: ['default' => 0])]
@@ -36,7 +35,6 @@ class Coupon
     private float $value = 0;
 
     #[ORM\Column(type: Types::ENUM, length: 20, options: ['default' => Status::ACTIVE])]
-    //#[Assert\Choice(choices: Status::values())]
     private ?Status $status = Status::ACTIVE;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]

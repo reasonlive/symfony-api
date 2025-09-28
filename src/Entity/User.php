@@ -71,6 +71,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->email;
     }
 
+    public function setFirstName(string $firstName): static
+    {
+        $this->firstName = $firstName;
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setLastName(string $lastName): static
+    {
+        $this->lastName = $lastName;
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
     public function getRoles(): array
     {
         $roles = $this->roles;
@@ -104,5 +126,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function updateTimestamps(): void
     {
         $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function addOrder(Order $order): self
+    {
+        if (!$this->orders->contains($order)) {
+            {
+                $this->orders[] = $order;
+            }
+        }
+
+        return $this;
     }
 }
