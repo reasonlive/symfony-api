@@ -40,19 +40,6 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findProductsByCategory(string $category, int $page = 1): array
-    {
-        $query = $this->createQueryBuilder('p')
-            ->andWhere('p.category = :category')
-            ->andWhere('p.isActive = :active')
-            ->andWhere('p.stock > 0')
-            ->setParameter('category', $category)
-            ->setParameter('active', true)
-            ->orderBy('p.createdAt', 'DESC');
-
-        return $this->paginate($query, $page);
-    }
-
     public function searchProducts(string $searchTerm, int $page = 1): array
     {
         $query = $this->createQueryBuilder('p')

@@ -9,16 +9,14 @@ enum CountryTaxPercent: int
     case GREECE = 24;
     case FRANCE = 20;
 
-    public static function getPercent(string $country): int
+    public static function get(string $country): ?self
     {
-        $value = 0;
         foreach (self::cases() as $case) {
-            if ($case->name === $country) {
-                $value = $case->value;
-                break;
+            if ($case->name === strtoupper($country)) {
+                return $case;
             }
         }
 
-        return $value;
+        return null;
     }
 }
