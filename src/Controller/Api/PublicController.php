@@ -27,7 +27,6 @@ class PublicController extends AbstractController
     use ApiJsonResponseTrait;
 
     public function __construct(
-        private readonly OrderService   $orderService,
         private readonly PaymentService $paymentService,
         private readonly ProductService $productService,
         private readonly CouponRepository $couponRepository,
