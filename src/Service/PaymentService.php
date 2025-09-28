@@ -55,6 +55,6 @@ class PaymentService
                 : $coupon->getValue();
         }
 
-        return $productPrice + ($productPrice * $percent->value / 100) - $discount;
+        return round($productPrice + ($productPrice * $percent->value / 100) - $discount, 2);
     }
 }

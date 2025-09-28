@@ -53,8 +53,9 @@ class PublicController extends AbstractController
         }
 
         if (
-            (!$coupon = $this->couponRepository->findByCode($data->couponCode))
-            || !$coupon->isValid()
+            (!$coupon = $this->couponRepository->findByCode($data->couponCode)) //coupon was not found
+            || !$coupon->isValid() // coupon is not valid
+            || $product->getCoupon()?->getCode() !== $coupon->getCode() // coupon for different product
         ) {
             $coupon = null;
         }
@@ -98,6 +99,7 @@ class PublicController extends AbstractController
         if (
             (!$coupon = $this->couponRepository->findByCode($data->couponCode))
             || !$coupon->isValid()
+            || $product->getCoupon()?->getCode() !== $coupon->getCode()
         ) {
             $coupon = null;
         }
