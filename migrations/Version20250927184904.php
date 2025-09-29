@@ -29,6 +29,7 @@ final class Version20250927184904 extends AbstractMigration
         $this->addSql('ALTER TABLE orders_products ADD CONSTRAINT FK_749C879C8D9F6D38 FOREIGN KEY (order_id) REFERENCES orders (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE orders_products ADD CONSTRAINT FK_749C879C4584665A FOREIGN KEY (product_id) REFERENCES products (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE products ADD CONSTRAINT FK_B3BA5A5A66C5951B FOREIGN KEY (coupon_id) REFERENCES coupons (id) ON DELETE SET NULL');
+        $this->addSql('ALTER TABLE products AUTO_INCREMENT = 1');
     }
 
     public function down(Schema $schema): void
