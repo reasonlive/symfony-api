@@ -49,12 +49,16 @@ class PaymentService
     public function calculatePrice(float $productPrice, CountryTaxPercent $percent, ?Coupon $coupon = null): float
     {
         $discount = 0;
+        $totalPrice = $productPrice + ($productPrice * $percent->value / 100); // with tax
+
         if ($coupon) {
             $discount = $coupon->isPercentage()
-                ? $productPrice * $coupon->getValue() / 100
+                ? $totalPrice * $coupon->getValue() / 100
                 : $coupon->getValue();
         }
 
-        return round($productPrice + ($productPrice * $percent->value / 100) - $discount, 2);
+        $totalPrice -= $discount;
+
+        return round(max($totalPrice, 0), 2);
     }
 }
